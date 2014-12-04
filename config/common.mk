@@ -109,3 +109,6 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/benzo/overlay/common
 
 # Inherit common product build prop overrides
 -include vendor/benzo/config/common_versions.mk
+
+# Squisher Location
+SQUISHER_SCRIPT := vendor/benzo/tools/squisher
