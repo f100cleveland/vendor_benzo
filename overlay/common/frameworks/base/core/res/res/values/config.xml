@@ -45,8 +45,8 @@
     <string name="widget_default_package_name">com.google.android.deskclock</string>
     <string name="widget_default_class_name">com.android.alarmclock.DigitalAppWidgetProvider</string>
 
-    <!-- Set default messaging app to Google Messenger -->
-    <string name="default_sms_application">com.google.android.apps.messaging</string>
+    <!-- Set default messaging app to Messaging -->
+    <string name="default_sms_application">com.android.messaging</string>
 
     <!-- Set defaults for Google Services -->
     <string name="config_appsAuthorizedForSharedAccounts">;com.android.vending;com.android.settings;</string>
