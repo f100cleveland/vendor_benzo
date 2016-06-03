@@ -113,7 +113,6 @@ PRODUCT_PACKAGES += \
     Launcher3 \
     LayersManager \
     LMT \
-    LockClock \
     OmniJaws \
     OmniStyle \
     OmniSwitch
