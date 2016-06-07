@@ -23,7 +23,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.romname=$(TARGET_DEVICE) \
     ro.ota.version=$(OTA_DATE) \
     ro.ota.device=$(TARGET_DEVICE) \
-    ro.ota.manifest=http://oceighty.co/ota64/ota.xml
+    ro.ota.manifest=http://oceighty.co/benzorom/ota.xml
 
 # DragonTC info
 DRAGONTC_VERSION := 3.9
