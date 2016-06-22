@@ -28,7 +28,7 @@ endif
 export TARGET_NDK_GCC_VERSION := 4.9
 export TARGET_GCC_VERSION_EXP := 4.9
 export TARGET_GCC_VERSION := 4.9
-export TARGET_GCC_VERSION_KERNEL := 6.1
+export TARGET_GCC_VERSION_KERNEL := 7.0
 
 # benzoCore
 export KBUILD_BUILD_USER := xanaxdroid
