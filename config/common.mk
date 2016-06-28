@@ -113,7 +113,6 @@ PRODUCT_PACKAGES += \
     KernelAdiutor \
     Launcher3 \
     LayersManager \
-    LockClock \
     LMT \
     OmniJaws \
     OmniStyle \
