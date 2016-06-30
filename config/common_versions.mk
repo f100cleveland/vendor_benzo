@@ -22,8 +22,14 @@ BENZO_DEVICE_URL := http://files.oceighty.co/benzo
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.romname=$(TARGET_DEVICE) \
     ro.ota.version=$(OTA_DATE) \
-    ro.ota.device=$(TARGET_DEVICE) \
+    ro.ota.device=$(TARGET_DEVICE)
+ifeq ($(TARGET_DEVICE),shamu)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ota.manifest=http://oceighty.co/ota/ota.xml
+else
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.manifest=http://oceighty.co/benzorom/ota.xml
+endif
 
 # DragonTC info
 DRAGONTC_VERSION := 3.9

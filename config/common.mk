@@ -62,8 +62,13 @@ PRODUCT_COPY_FILES += \
     vendor/benzo/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
 # init file
+ifeq ($(TARGET_DEVICE),shamu)
+PRODUCT_COPY_FILES += \
+    vendor/benzo/prebuilt/common/etc/init.benzo.rc_arm:root/init.benzo.rc
+else
 PRODUCT_COPY_FILES += \
     vendor/benzo/prebuilt/common/etc/init.benzo.rc:root/init.benzo.rc
+endif
 
 # Google DNS server
 PRODUCT_COPY_FILES += \
@@ -88,11 +93,17 @@ PRODUCT_COPY_FILES += \
    vendor/benzo/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
 
 # Viper4Android
+PRODUCT_PACKAGES += \
+    ViPER4Android
+ifeq ($(TARGET_DEVICE),shamu)
+PRODUCT_COPY_FILES += \
+    vendor/benzo/prebuilt/common/addon.d/91-v4a.sh:system/addon.d/91-v4a.sh \
+    vendor/benzo/prebuilt/common/etc/v4a_arm.zip:system/addon.d/v4a.zip
+else
 PRODUCT_COPY_FILES += \
     vendor/benzo/prebuilt/common/addon.d/91-v4a.sh:system/addon.d/91-v4a.sh \
     vendor/benzo/prebuilt/common/etc/v4a.zip:system/addon.d/v4a.zip
-PRODUCT_PACKAGES += \
-    ViPER4Android
+endif
 
 # Assertive Disaply
 PRODUCT_COPY_FILES += \
@@ -124,7 +135,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/benzo/overlay/common
 
-include vendor/benzo/config/optimizations/sm.mk
-
+ifeq ($(TARGET_DEVICE),shamu)
+   include vendor/benzo/config/optimizations/sm_arm.mk
+else
+   include vendor/benzo/config/optimizations/sm.mk
+endif
 # Inherit common product build prop overrides
 -include vendor/benzo/config/common_versions.mk

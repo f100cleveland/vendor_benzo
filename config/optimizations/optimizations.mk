@@ -15,7 +15,11 @@ export USE_O3_OPTIMIZATIONS := false
 export FORCE_DISABLE_DEBUGGING := true
 export ENABLE_IPA_ANALYSER := true
 export TARGET_USE_PIPE := true
+ifeq ($(TARGET_DEVICE),shamu)
+export KRAIT_TUNINGS := true
+else
 export CORTEX_TUNINGS := true
+endif
 export ENABLE_PTHREAD := true
 export ENABLE_GOMP := true
 export GRAPHITE_OPTS := true
@@ -27,8 +31,13 @@ endif
 # Toolchain and other
 export TARGET_NDK_GCC_VERSION := 4.9
 export TARGET_GCC_VERSION_EXP := 4.9
+ifeq ($(TARGET_DEVICE),shamu)
 export TARGET_GCC_VERSION := 4.9
 export TARGET_GCC_VERSION_KERNEL := 7.0
+else
+export TARGET_GCC_VERSION := 4.9
+export TARGET_GCC_VERSION_KERNEL := 7.0
+endif
 
 # benzoCore
 export KBUILD_BUILD_USER := xanaxdroid

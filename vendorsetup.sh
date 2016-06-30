@@ -15,3 +15,5 @@
 #
 add_lunch_combo benzo_angler-userdebug
 add_lunch_combo benzo_angler-user
+add_lunch_combo benzo_shamu-userdebug
+add_lunch_combo benzo_shamu-user
