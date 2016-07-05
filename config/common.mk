@@ -86,10 +86,6 @@ PRODUCT_COPY_FILES += \
     vendor/benzo/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
     vendor/benzo/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
 
-# Layers backup
-PRODUCT_COPY_FILES += \
-    vendor/benzo/prebuilt/common/addon.d/71-layers.sh:system/addon.d/71-layers.sh
-
 # SuperSU
 PRODUCT_COPY_FILES += \
    vendor/benzo/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
@@ -126,11 +122,20 @@ PRODUCT_PACKAGES += \
     Gallery2 \
     KernelAdiutor \
     Launcher3 \
-    LayersManager \
     LMT \
     OmniJaws \
     OmniStyle \
     OmniSwitch
+
+ifeq ($(IS_OMS),true)
+PRODUCT_PACKAGES += \
+    Substratum
+else
+PRODUCT_PACKAGES += \
+    LayersManager
+PRODUCT_COPY_FILES += \
+    vendor/benzo/prebuilt/common/addon.d/71-layers.sh:system/addon.d/71-layers.sh
+endif
 
 # Busybox
 PRODUCT_PACKAGES += \
