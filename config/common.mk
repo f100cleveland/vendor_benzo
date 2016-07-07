@@ -34,13 +34,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Enable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += \
-	ro.adb.secure=0 \
-	ro.secure=0
+    ro.adb.secure=0 \
+    ro.secure=0
 
 # Enable MTP by default
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.config=mtp,adb \
     persist.sys.usb.config=mtp,adb
+
+# GoogleDNS
+PRODUCT_PROPERTY_OVERRIDES += \
+    net.rmnet0.dns1=8.8.8.8 \
+    net.rmnet0.dns2=8.8.4.4 \
+    net.dns1=8.8.8.8 \
+    net.dns2=8.8.4.4
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
@@ -69,10 +76,6 @@ else
 PRODUCT_COPY_FILES += \
     vendor/benzo/prebuilt/common/etc/init.benzo.rc:root/init.benzo.rc
 endif
-
-# Google DNS server
-PRODUCT_COPY_FILES += \
-    vendor/benzo/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf
 
 # Enable SIP+VoIP
 PRODUCT_COPY_FILES += \
