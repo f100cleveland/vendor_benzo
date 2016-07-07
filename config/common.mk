@@ -125,17 +125,8 @@ PRODUCT_PACKAGES += \
     LMT \
     OmniJaws \
     OmniStyle \
-    OmniSwitch
-
-ifeq ($(IS_OMS),true)
-PRODUCT_PACKAGES += \
+    OmniSwitch \
     Substratum
-else
-PRODUCT_PACKAGES += \
-    LayersManager
-PRODUCT_COPY_FILES += \
-    vendor/benzo/prebuilt/common/addon.d/71-layers.sh:system/addon.d/71-layers.sh
-endif
 
 # Busybox
 PRODUCT_PACKAGES += \
