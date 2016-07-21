@@ -118,10 +118,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.add_power_save=1 \
     persist.radio.data_no_toggle=1
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.privacy.randomize_mac=0 \
-    persist.privacy.randomize_host=0
-
 # Extra packages
 PRODUCT_PACKAGES += \
     BenzoBlock \
