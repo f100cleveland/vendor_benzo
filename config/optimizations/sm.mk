@@ -73,7 +73,7 @@ ifeq (true,$(STRICT_ALIASING))
 endif
 
 ifeq ($(CORTEX_TUNINGS),true)
-   OPT4 := (cortex-a57)
+   OPT4 := (big.LITTLE)
 endif
 
 # Used by DTC
