@@ -35,7 +35,7 @@ ifeq ($(TARGET_DEVICE),shamu)
 export TARGET_GCC_VERSION := 4.9
 export TARGET_GCC_VERSION_KERNEL := 7.0
 else
-export TARGET_GCC_VERSION := 4.9
+export TARGET_GCC_VERSION := 6.1
 export TARGET_GCC_VERSION_KERNEL := 7.0
 endif
 
