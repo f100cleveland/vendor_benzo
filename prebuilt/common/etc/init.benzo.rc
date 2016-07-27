@@ -15,12 +15,12 @@ on boot
     chmod 0660 /dev/cpuctl/cpu.notify_on_migrate
     write /sys/module/msm_thermal/core_control/enabled 0
 
-    chown system system /sys/module/workqueue/parameters/power_efficient
-    chmod 0664 /sys/module/workqueue/parameters/power_efficient
-
     chown system system /sys/block/mmcblk0/queue/scheduler
     chmod 0664 /sys/block/mmcblk0/queue/scheduler
     restorecon /sys/block/mmcblk0/queue/scheduler
+
+    chown system system /sys/module/workqueue/parameters/power_efficient
+    chmod 0664 /sys/module/workqueue/parameters/power_efficient
 
     # Persistent properties (only created if persist exists)
     mkdir /persist/properties 0770 system system
@@ -29,9 +29,8 @@ on property:dev.bootcomplete=1
 
     # Thermal control
     write /sys/module/msm_thermal/parameters/enabled Y
-    write /sys/module/msm_thermal/parameters/temp_threshold 80
+    write /sys/module/msm_thermal/parameters/temp_threshold 68
     write /sys/module/msm_thermal/core_control/enabled 0
-    write /sys/module/workqueue/parameters/power_efficient N
 
     #LITTLE
     write /sys/devices/system/cpu/cpu0/online 1
