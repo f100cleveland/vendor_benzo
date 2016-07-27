@@ -114,6 +114,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.add_power_save=1 \
     persist.radio.data_no_toggle=1
 
+# Substratum. Use recreate
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.substratum.recreate=true
+
 # Extra packages
 PRODUCT_PACKAGES += \
     BenzoBlock \
@@ -123,6 +127,7 @@ PRODUCT_PACKAGES += \
     KernelAdiutor \
     Launcher3 \
     LMT \
+    masquerade \
     OmniJaws \
     OmniStyle \
     OmniSwitch \
