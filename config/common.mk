@@ -139,6 +139,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/benzo/overlay/common
 
+## Don't compile SystemUITests
+EXCLUDE_SYSTEMUI_TESTS := true
+
 ifeq ($(TARGET_DEVICE),shamu)
    include vendor/benzo/config/optimizations/sm_arm.mk
 else
