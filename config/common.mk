@@ -97,6 +97,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/benzo/overlay/common
 
+## Don't compile SystemUITests
+EXCLUDE_SYSTEMUI_TESTS := true
+
 # Inherit common product build prop overrides
 -include vendor/benzo/config/common_versions.mk
 
