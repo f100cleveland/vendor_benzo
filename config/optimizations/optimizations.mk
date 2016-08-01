@@ -13,6 +13,7 @@ ifneq ($(DISABLE_OPTIMIZATIONS),true)
 export DONT_ERROROUT := false
 export USE_O3_OPTIMIZATIONS := false
 export FORCE_DISABLE_DEBUGGING := true
+export ENABLE_ARM_MODE := true
 export ENABLE_IPA_ANALYSER := true
 export TARGET_USE_PIPE := true
 ifeq ($(TARGET_DEVICE),shamu)

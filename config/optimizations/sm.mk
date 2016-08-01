@@ -76,8 +76,11 @@ ifeq ($(CORTEX_TUNINGS),true)
    OPT4 := (big.LITTLE)
 endif
 
+ifeq ($(ENABLE_ARM_MODE),true)
+   OPT5 := (arm-mode)
+endif
+
 # Used by DTC
-   OPT5 := (ThinLTO)
    OPT6 := (polly)
 
 ifeq ($(ENABLE_PTHREAD),true)
