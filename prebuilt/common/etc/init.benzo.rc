@@ -92,6 +92,9 @@ on property:dev.bootcomplete=1
     chown system system /sys/module/adreno_idler/parameters/adreno_idler_ideworkload
     chmod 0644 /sys/module/adreno_idler/parameters/adreno_idler_ideworkload
 
+    # Backlight dimmer
+    write /sys/module/mdss_fb/parameters/backlight_dimmer Y
+
 # adb over network
 on property:service.adb.tcp.port=5555
     stop adbd
