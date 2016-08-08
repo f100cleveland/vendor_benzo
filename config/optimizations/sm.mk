@@ -36,7 +36,7 @@
   SM_AND := $(shell cat $(SM_AND_PATH)/VERSION)
 
   # Find strings in version info
-  SM_AND_NAME := $(filter %sabermod,$(SM_AND))
+  SM_AND_NAME := $(filter %linaro,$(SM_AND))
   SM_AND_DATE := $(filter 20140% 20141% 20150% 20151% 20160% 20161%,$(SM_AND))
   SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
   SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
