@@ -114,24 +114,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.add_power_save=1 \
     persist.radio.data_no_toggle=1
 
-# Substratum. Use recreate
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.substratum.recreate=true
-
 # Extra packages
 PRODUCT_PACKAGES += \
-    BenzoBlock \
     BenzoOTA \
-    Browser \
     Gallery2 \
-    KernelAdiutor \
     Launcher3 \
-    LMT \
     masquerade \
     OmniJaws \
     OmniStyle \
-    OmniSwitch \
-    Substratum
+    OmniSwitch
 
 # Busybox
 PRODUCT_PACKAGES += \
@@ -147,5 +138,6 @@ ifeq ($(TARGET_DEVICE),shamu)
 else
    include vendor/benzo/config/optimizations/sm.mk
 endif
+
 # Inherit common product build prop overrides
 -include vendor/benzo/config/common_versions.mk
