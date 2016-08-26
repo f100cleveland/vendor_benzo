@@ -30,7 +30,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.allow.mock.location=0 \
     ro.debuggable=1 \
     persist.service.adb.enable=1 \
-    persist.sys.root_access=3
+    persist.sys.root_access=3 \
+    ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent
 
 # Enable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += \
