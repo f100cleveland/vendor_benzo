@@ -1,6 +1,6 @@
-# World APN list
-#PRODUCT_COPY_FILES += \
-#    vendor/benzo/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
+# Old APNS
+PRODUCT_COPY_FILES += \
+    vendor/benzo/prebuilt/common/etc/old-apns-conf.xml:system/etc/old-apns-conf.xml
 
 # Telephony packages
 PRODUCT_PACKAGES += \
