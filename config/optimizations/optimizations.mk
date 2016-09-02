@@ -13,6 +13,9 @@ export TARGET_GCC_VERSION_KERNEL := 7.0
 export KBUILD_BUILD_USER := xanaxdroid
 export KBUILD_BUILD_HOST := benzo
 
+# Jack server heap size
+export ANDROID_JACK_VM_ARGS += "-Xmx4g"
+
 # Prop Optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.performance.tuning=1 \
