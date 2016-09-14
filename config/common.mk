@@ -100,7 +100,8 @@ PRODUCT_PACKAGES += \
     AOSPLinks \
     Gallery2 \
     Launcher3 \
-    masquerade
+    masquerade \
+    Terminal
 
 # Busybox
 PRODUCT_PACKAGES += \
