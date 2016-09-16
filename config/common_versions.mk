@@ -25,3 +25,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.device=$(TARGET_DEVICE) \
     ro.ota.manifest=http://oceighty.co/benzorom/ota.xml
 
+# Get kernel GCC version
+-include vendor/benzo/config/optimizations/sm.mk
