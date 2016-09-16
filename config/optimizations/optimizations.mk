@@ -7,7 +7,7 @@ export BLOCK_BUILD := true
 export TARGET_DEVICE := angler
 
 # Toolchain and other
-export TARGET_GCC_VERSION_KERNEL := 7.0
+export TARGET_GCC_VERSION_KERNEL := 6.2
 
 # benzoCore
 export KBUILD_BUILD_USER := xanaxdroid
