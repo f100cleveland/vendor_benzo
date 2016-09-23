@@ -83,18 +83,6 @@ PRODUCT_COPY_FILES += \
     vendor/benzo/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so \
     vendor/benzo/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so
 
-# SuperSU
-PRODUCT_COPY_FILES += \
-   vendor/benzo/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
-   vendor/benzo/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
-
-# Viper4Android
-PRODUCT_PACKAGES += \
-    ViPER4Android
-PRODUCT_COPY_FILES += \
-    vendor/benzo/prebuilt/common/addon.d/91-v4a.sh:system/addon.d/91-v4a.sh \
-    vendor/benzo/prebuilt/common/etc/v4a.zip:system/addon.d/v4a.zip
-
 # Extra packages
 PRODUCT_PACKAGES += \
     AOSPLinks \
