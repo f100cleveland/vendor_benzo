@@ -1,13 +1,7 @@
 on init
+
     export ANDROID_CACHE /cache
     export TERMINFO /system/etc/terminfo
-
-    # Run sysinit
-    start sysinit
-
-    # Allow system_app to write to setenforce
-    chown root system /sys/fs/selinux/enforce
-    chmod 0660 /sys/fs/selinux/enforce
 
 on boot
 
@@ -24,6 +18,11 @@ on boot
 
     # Persistent properties (only created if persist exists)
     mkdir /persist/properties 0770 system system
+
+on post-fs-data
+
+    # Run sysinit
+    start sysinit
 
 on property:dev.bootcomplete=1
 
@@ -108,6 +107,7 @@ service sysinit /system/bin/sysinit
     user root
     oneshot
     disabled
+    seclabel u:r:sysinit:s0
 
 # init.d (/system/etc/init.d)
 service userinit /system/xbin/busybox run-parts /system/etc/init.d
