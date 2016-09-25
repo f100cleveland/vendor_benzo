@@ -86,6 +86,7 @@ PRODUCT_COPY_FILES += \
 # Extra packages
 PRODUCT_PACKAGES += \
     AOSPLinks \
+    BenzoOTA \
     Gallery2 \
     Launcher3 \
     masquerade \
