@@ -27,3 +27,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Get kernel GCC version
 -include vendor/benzo/config/optimizations/sm.mk
+
+# DragonTC info
+DRAGONTC_VERSION := 3.8
+export $(DRAGONTC_VERSION)
+
+DTC_PATH := prebuilts/clang/host/linux-x86/$(DRAGONTC_VERSION)
+DTC_VER := $(shell cat $(DTC_PATH)/VERSION)
+export $(DTC_VER)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.dtc.version=$(DTC_VER)
