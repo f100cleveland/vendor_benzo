@@ -97,6 +97,7 @@ PRODUCT_PACKAGES += \
     Gallery2 \
     Launcher3 \
     masquerade \
+    OmniSwitch \
     Terminal
 
 # Busybox
