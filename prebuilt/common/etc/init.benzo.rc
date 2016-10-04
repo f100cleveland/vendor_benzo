@@ -94,6 +94,22 @@ on property:dev.bootcomplete=1
     # Backlight dimmer
     write /sys/module/mdss_fb/parameters/backlight_dimmer Y
 
+    # Set KSM configuration
+    write /sys/kernel/mm/ksm/pages_to_scan 512
+    write /sys/kernel/mm/ksm/sleep_millisecs 1000
+    write /sys/kernel/mm/ksm/merge_across_nodes 0
+    write /sys/kernel/mm/ksm/run 0
+
+    # Re-enable retention idle state
+    write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 1
+    write /sys/module/lpm_levels/system/a53/cpu1/retention/idle_enabled 1
+    write /sys/module/lpm_levels/system/a53/cpu2/retention/idle_enabled 1
+    write /sys/module/lpm_levels/system/a53/cpu3/retention/idle_enabled 1
+    write /sys/module/lpm_levels/system/a57/cpu4/retention/idle_enabled 1
+    write /sys/module/lpm_levels/system/a57/cpu5/retention/idle_enabled 1
+    write /sys/module/lpm_levels/system/a53/a53-l2-retention/idle_enabled 1
+    write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 1
+
 # adb over network
 on property:service.adb.tcp.port=5555
     stop adbd
