@@ -81,7 +81,7 @@ fi
 if [ -e "$1" ];
 then
     NAME=`basename $1`;
-    echo $CL_CYN$OPTSTRING $CL_YLW"$NAME..."$CL_RST;
+    echo -e $CL_CYN"$OPTSTRING "$CL_GRN"$NAME"$CL_RST;
 
     if [ "$2" != "" ];
     then
@@ -109,7 +109,7 @@ then
         fi
         if [ "$CERT" = "PRESIGNED" ];
         then
-            echo $CL_GRN"$NAME is presigned, skipping"$CL_RST
+            echo -e "$NAME "$CL_YLW"is presigned, skipping"$CL_RST
             exit 1;
         fi
     fi
