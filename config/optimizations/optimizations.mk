@@ -16,6 +16,9 @@ export KBUILD_BUILD_HOST := benzo
 # Jack server heap size
 export ANDROID_JACK_VM_ARGS += "-Xmx4g"
 
+# Force Java8
+export LOCAL_JAVA_LANGUAGE_VERSION := 1.8
+
 # Prop Optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.performance.tuning=1 \
