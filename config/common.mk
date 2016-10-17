@@ -71,7 +71,8 @@ PRODUCT_COPY_FILES += \
 
 # init file
 PRODUCT_COPY_FILES += \
-    vendor/benzo/prebuilt/common/etc/init.benzo.rc:root/init.benzo.rc
+    vendor/benzo/prebuilt/common/etc/init.benzo.rc:root/init.benzo.rc \
+    vendor/benzo/prebuilt/common/etc/init.benzo_power.sh:root/init.benzo_power.sh
 
 # Enable SIP+VoIP
 PRODUCT_COPY_FILES += \

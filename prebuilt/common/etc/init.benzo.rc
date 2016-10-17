@@ -1,27 +1,3 @@
-on charger
-
-    # Power down cpus
-    write /sys/devices/system/cpu/cpu1/online 0
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/devices/system/cpu/cpu4/online 0
-    write /sys/devices/system/cpu/cpu5/online 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
-
-    # Disable CPU retention
-    write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a53/cpu1/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a53/cpu2/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a53/cpu3/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a57/cpu4/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a57/cpu5/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a53/a53-l2-retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 0
-
-on property:sys.boot_completed=1
-    # allow CPUs to go in deeper idle state than C0
-    write /sys/module/lpm_levels/parameters/sleep_disabled 0
-
 on init
 
     export ANDROID_CACHE /cache
@@ -36,36 +12,17 @@ on boot
     chmod 0660 /dev/cpuctl/cpu.notify_on_migrate
     write /sys/module/msm_thermal/core_control/enabled 0
 
-    chown system system /sys/block/mmcblk0/queue/scheduler
-    chmod 0664 /sys/block/mmcblk0/queue/scheduler
-    restorecon /sys/block/mmcblk0/queue/scheduler
-
-    chown system system /sys/module/workqueue/parameters/power_efficient
-    chmod 0664 /sys/module/workqueue/parameters/power_efficient
-
-    # Persistent properties (only created if persist exists)
-    mkdir /persist/properties 0770 system system
-
     # Subsytem Restart
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys2/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
 
-    # Subsytem Ramdump collection
-    write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-    write /sys/module/msm_poweroff/parameters/download_mode 0
-
-    # Adjust socket buffer to enlarge TCP receive window for high bandwidth
-    write /proc/sys/net/ipv4/tcp_adv_win_scale 1
-
-    # Assign TCP buffer thresholds to be ceiling value of technology maximums
-    # Increased technology maximums should be reflected here.
-    write /proc/sys/net/core/rmem_max  8388608
-    write /proc/sys/net/core/wmem_max  8388608
-
     write /sys/block/mmcblk0/queue/rq_affinity 0
     write /sys/block/mmcblk0/queue/scheduler bfq
+
+    # Start Power tweaks
+    start benzo_power
 
     # Disable msm_thermal for now
     write /sys/module/msm_thermal/core_control/enabled 0
@@ -135,9 +92,9 @@ on boot
 
     # Set KSM configuration
     write /sys/kernel/mm/ksm/pages_to_scan 512
-    write /sys/kernel/mm/ksm/sleep_millisecs 1000
+    write /sys/kernel/mm/ksm/sleep_millisecs 800
     write /sys/kernel/mm/ksm/merge_across_nodes 0
-    write /sys/kernel/mm/ksm/run 0
+    write /sys/kernel/mm/ksm/run 1
 
     # Re-enable retention idle state
     write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 1
@@ -148,21 +105,6 @@ on boot
     write /sys/module/lpm_levels/system/a57/cpu5/retention/idle_enabled 1
     write /sys/module/lpm_levels/system/a53/a53-l2-retention/idle_enabled 1
     write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 1
-
-    # devfreq
-    write /sys/class/devfreq/qcom,cpubw.32/governor bw_hwmon
-    restorecon_recursive /sys/class/devfreq/qcom,cpubw.32
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/sample_ms 4
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/io_percent 34
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/hist_memory 20
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/hyst_length 10
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/low_power_ceil_mbps 0
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/low_power_io_percent 34
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/low_power_delay 20
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/guard_band_mbps 0
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/up_scale 250
-    write /sys/class/devfreq/qcom,cpubw.32/bw_hwmon/idle_mbps 1600
-    write /sys/class/devfreq/qcom,mincpubw.33/governor cpufreq
 
     # Re-enable msm_thermal
     write /sys/module/msm_thermal/core_control/enabled 1
@@ -180,6 +122,13 @@ on property:service.adb.tcp.port=5555
 on property:service.adb.tcp.port=-1
     stop adbd
     start adbd
+
+service benzo_power /system/bin/sh /init.benzo_power.sh
+    disabled
+    class late_start
+    user root
+    group root
+    oneshot
 
 # sysinit (/system/etc/init.d)
 service sysinit /system/bin/sysinit
