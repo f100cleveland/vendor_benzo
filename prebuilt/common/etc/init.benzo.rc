@@ -1,3 +1,13 @@
+on property:sys.boot_completed=1
+    # allow CPUs to go in deeper idle state than C0
+    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+
+    # Re-enable msm_thermal
+    write /sys/module/msm_thermal/parameters/enabled Y
+    write /sys/module/msm_thermal/parameters/core_limit_temp_degC 68
+    write /sys/module/msm_thermal/parameters/limit_temp_degC 60
+    write /sys/module/msm_thermal/parameters/poll_ms 350
+
 on init
 
     export ANDROID_CACHE /cache
@@ -10,7 +20,6 @@ on boot
 
     chown system system /dev/cpuctl/cpu.notify_on_migrate
     chmod 0660 /dev/cpuctl/cpu.notify_on_migrate
-    write /sys/module/msm_thermal/core_control/enabled 0
 
     # Subsytem Restart
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
@@ -107,13 +116,10 @@ on boot
     write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 1
 
     # Re-enable msm_thermal
-    write /sys/module/msm_thermal/core_control/enabled 1
-    write /sys/module/msm_thermal/parameters/temp_threshold 68
-    write /sys/module/msm_thermal/parameters/temp_big_threshold 70
-    write /sys/module/msm_thermal/parameters/temp_step 4
-    write /sys/module/msm_thermal/parameters/freq_step_little 1
-    write /sys/module/msm_thermal/parameters/freq_step_big 2
-    write /sys/module/msm_thermal/parameters/temp_count_max 3
+    write /sys/module/msm_thermal/parameters/enabled Y
+    write /sys/module/msm_thermal/parameters/core_limit_temp_degC 68
+    write /sys/module/msm_thermal/parameters/limit_temp_degC 60
+    write /sys/module/msm_thermal/parameters/poll_ms 350
 
 # adb over network
 on property:service.adb.tcp.port=5555
