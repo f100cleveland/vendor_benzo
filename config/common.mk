@@ -97,6 +97,7 @@ PRODUCT_PACKAGES += \
     BenzoOTA \
     Gallery2 \
     Launcher3 \
+    LockClock \
     masquerade \
     messaging \
     OmniSwitch \
