@@ -1,6 +1,5 @@
 # System
 export USE_CCACHE := 1
-export USE_SYSTEM_CCACHE := 1
 export BLOCK_BUILD := true
 
 # Target device
