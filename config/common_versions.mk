@@ -30,11 +30,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # DragonTC info
 DRAGONTC_VERSION := 3.8
-export $(DRAGONTC_VERSION)
 
 DTC_PATH := prebuilts/clang/host/linux-x86/$(DRAGONTC_VERSION)
 DTC_VER := $(shell cat $(DTC_PATH)/VERSION)
-export $(DTC_VER)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.dtc.version=$(DTC_VER)
