@@ -29,7 +29,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 -include vendor/benzo/config/optimizations/sm.mk
 
 # DragonTC info
-DRAGONTC_VERSION := 3.8
+DRAGONTC_VERSION := 4.0
 
 DTC_PATH := prebuilts/clang/host/linux-x86/$(DRAGONTC_VERSION)
 DTC_VER := $(shell cat $(DTC_PATH)/VERSION)
