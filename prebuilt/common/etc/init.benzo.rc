@@ -9,7 +9,7 @@ on init
 on boot
 
     write /sys/block/mmcblk0/queue/rq_affinity 0
-    write /sys/block/mmcblk0/queue/scheduler bfq
+    write /sys/block/mmcblk0/queue/scheduler deadline
 
     # Start Power tweaks
     start benzo_power
@@ -63,10 +63,20 @@ on boot
     chmod 0644 /sys/android_touch/vib_strength
     write /sys/android_touch/vib_strength 40
 
-    # Backlight dimmer
-    write /sys/module/mdss_fb/parameters/backlight_dimmer Y
+    # Vibrate maxx
+    write /sys/class/timed_output/vibrator/vmax_mv_strong 3596
+    write /sys/devices/virtual/timed_output/vibrator/vmax_mv_light 3296
 
-    # Enable msm_thermal
+    # Misc options
+    write /sys/module/mdss_fb/parameters/backlight_dimmer Y
+    write /sys/kernel/sched/gentle_fair_sleepers 0
+    write /sys/module/sync/parameters/fsync_enabled N
+    write /sys/module/mmc_core/parameters/use_spi_crc 0
+    write /sys/kernel/sched/arch_power 1
+
+    # msm_thermal
+    write /sys/module/msm_thermal/parameters/enabled N
+    write /sys/module/msm_thermal/vdd_restriction/enabled 0
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/temp_threshold 68
     write /sys/module/msm_thermal/parameters/temp_big_threshold 70
@@ -74,6 +84,22 @@ on boot
     write /sys/module/msm_thermal/parameters/freq_step_little 1
     write /sys/module/msm_thermal/parameters/freq_step_big 2
     write /sys/module/msm_thermal/parameters/temp_count_max 3
+
+    # KSM - Kernel Samepage Mapping
+    write /sys/kernel/mm/ksm/run 1
+    write /sys/kernel/mm/ksm/deferred_timer 0
+    write /sys/kernel/mm/ksm/pages_to_scan 256
+    write /sys/kernel/mm/ksm/sleep_millisecs 150
+
+    # Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+
+    # Process Reclaim
+    write /sys/module/process_reclaim/parameters/enable_process_reclaim 1
+    write /sys/module/process_reclaim/parameters/pressure_min 50
+    write /sys/module/process_reclaim/parameters/pressure_max 70
+    write /sys/module/process_reclaim/parameters/per_swap_size 512
+    write /sys/module/process_reclaim/parameters/swap_opt_eff 30
 
 # adb over network
 on property:service.adb.tcp.port=5555
