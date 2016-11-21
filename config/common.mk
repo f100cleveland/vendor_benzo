@@ -96,11 +96,11 @@ PRODUCT_PACKAGES += \
     AOSPLinks \
     BenzoOTA \
     Gallery2 \
-    Launcher3 \
     LockClock \
     masquerade \
     messaging \
     OmniSwitch \
+    SlimLauncher \
     Terminal
 
 # Busybox
