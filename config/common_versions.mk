@@ -1,7 +1,7 @@
 # Version information used on all builds
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=NMF26O BUILD_ID=NMF26O BUILD_VERSION_TAGS=release-keys BUILD_UTC_DATE=0
 
-ANDROID_NAME := sevendotone
+ANDROID_NAME := sevenoneone
 export ANDROID_NAME
 
     CUSTOM_BUILD_TYPE := UNOFFICIAL
