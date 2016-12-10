@@ -100,7 +100,7 @@ PRODUCT_PACKAGES += \
     masquerade \
     messaging \
     OmniSwitch \
-    SlimLauncher \
+    Launcher3 \
     Terminal
 
 # Busybox
