@@ -43,13 +43,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.config=mtp,adb \
     persist.sys.usb.config=mtp,adb
 
-# GoogleDNS
-PRODUCT_PROPERTY_OVERRIDES += \
-    net.rmnet0.dns1=8.8.8.8 \
-    net.rmnet0.dns2=8.8.4.4 \
-    net.dns1=8.8.8.8 \
-    net.dns2=8.8.4.4
-
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/benzo/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
