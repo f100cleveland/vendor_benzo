@@ -88,12 +88,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     AOSPLinks \
     BenzoOTA \
-    Gallery2 \
     LockClock \
     masquerade \
     messaging \
     OmniSwitch \
-    Launcher3 \
+    SnapdragonGallery \
     Terminal
 
 # Busybox
