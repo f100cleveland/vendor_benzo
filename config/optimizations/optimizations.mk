@@ -6,7 +6,7 @@ BLOCK_BUILD := true
 TARGET_DEVICE := angler
 
 # Toolchain and other
-TARGET_GCC_VERSION_KERNEL := 6.2
+TARGET_GCC_VERSION_KERNEL := 6.3
 
 # benzoCore
 KBUILD_BUILD_USER := xanaxdroid
