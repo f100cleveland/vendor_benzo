@@ -19,39 +19,57 @@ on boot
 
     # LITTLE
     write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor impulse
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor blu_active
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 302400
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1708800
     write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor impulse
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor blu_active
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 302400
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1708800
     write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor impulse
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor blu_active
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 302400
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1708800
     write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor impulse
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor blu_active
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 302400
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1708800
 
     # big
     write /sys/devices/system/cpu/cpu4/online 1
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor impulse
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor blu_active
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 302400
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1958400
     write /sys/devices/system/cpu/cpu5/online 1
-    write /sys/devices/system/cpu/cpu5/cpufreq/scaling_governor impulse
+    write /sys/devices/system/cpu/cpu5/cpufreq/scaling_governor blu_active
     write /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq 302400
     write /sys/devices/system/cpu/cpu5/cpufreq/scaling_max_freq 1958400
     write /sys/devices/system/cpu/cpu6/online 1
-    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor impulse
+    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor blu_active
     write /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq 302400
     write /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq 1958400
     write /sys/devices/system/cpu/cpu7/online 1
-    write /sys/devices/system/cpu/cpu7/cpufreq/scaling_governor impulse
+    write /sys/devices/system/cpu/cpu7/cpufreq/scaling_governor blu_active
     write /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq 302400
     write /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq 1958400
+
+    # blu_active
+    write /sys/devices/system/cpu/cpu0/cpufreq/blu_active/align_windows 1
+    write /sys/devices/system/cpu/cpu1/cpufreq/blu_active/align_windows 1
+    write /sys/devices/system/cpu/cpu2/cpufreq/blu_active/align_windows 1
+    write /sys/devices/system/cpu/cpu3/cpufreq/blu_active/align_windows 1
+    write /sys/devices/system/cpu/cpu4/cpufreq/blu_active/align_windows 1
+    write /sys/devices/system/cpu/cpu5/cpufreq/blu_active/align_windows 1
+    write /sys/devices/system/cpu/cpu6/cpufreq/blu_active/align_windows 1
+    write /sys/devices/system/cpu/cpu7/cpufreq/blu_active/align_windows 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/blu_active/fast_ramp_down 1
+    write /sys/devices/system/cpu/cpu1/cpufreq/blu_active/fast_ramp_down 1
+    write /sys/devices/system/cpu/cpu2/cpufreq/blu_active/fast_ramp_down 1
+    write /sys/devices/system/cpu/cpu3/cpufreq/blu_active/fast_ramp_down 1
+    write /sys/devices/system/cpu/cpu4/cpufreq/blu_active/fast_ramp_down 1
+    write /sys/devices/system/cpu/cpu5/cpufreq/blu_active/fast_ramp_down 1
+    write /sys/devices/system/cpu/cpu6/cpufreq/blu_active/fast_ramp_down 1
+    write /sys/devices/system/cpu/cpu7/cpufreq/blu_active/fast_ramp_down 1
 
     # Wake Gestures
     chown system system /sys/android_touch/doubletap2wake
@@ -89,6 +107,10 @@ on boot
     write /sys/kernel/mm/ksm/pages_to_scan 256
     write /sys/kernel/mm/ksm/sleep_millisecs 150
     write /sys/kernel/mm/ksm/deferred_timer 1
+
+    # uksm
+    write /sys/kernel/mm/uksm/max_cpu_percentage 20
+    write /sys/kernel/mm/uksm/run 1
 
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
