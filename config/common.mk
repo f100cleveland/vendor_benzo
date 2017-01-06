@@ -84,6 +84,7 @@ PRODUCT_PACKAGES += \
     LockClock \
     masquerade \
     messaging \
+    OmniStyle \
     OmniSwitch \
     Gallery2 \
     Terminal
