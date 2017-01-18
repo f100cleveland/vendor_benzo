@@ -89,9 +89,11 @@ PRODUCT_PACKAGES += \
     Gallery2 \
     Terminal
 
-# Busybox
+# Busybox & bash
 PRODUCT_PACKAGES += \
-    Busybox
+    bash \
+    Busybox \
+    libncurses
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/benzo/overlay/common
 
