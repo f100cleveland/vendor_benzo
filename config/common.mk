@@ -43,6 +43,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.config=mtp,adb \
     persist.sys.usb.config=mtp,adb
 
+# fingerprint
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.fingerprint=fpc
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/benzo/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -84,10 +88,12 @@ PRODUCT_PACKAGES += \
     LockClock \
     masquerade \
     messaging \
+    OmniJaws \
     OmniStyle \
     OmniSwitch \
     Gallery2 \
-    Terminal
+    Terminal \
+    ThemeInterfacer \
 
 # Busybox & bash
 PRODUCT_PACKAGES += \
