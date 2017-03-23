@@ -1,4 +1,4 @@
-ifeq (benzo_angler,$(TARGET_PRODUCT))
-    PRODUCT_MAKEFILES += $(LOCAL_DIR)/benzo_angler.mk
+ifeq (benzo_marlin,$(TARGET_PRODUCT))
+    PRODUCT_MAKEFILES += $(LOCAL_DIR)/benzo_marlin.mk
 endif
 
