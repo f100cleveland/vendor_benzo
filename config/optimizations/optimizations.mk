@@ -4,14 +4,14 @@ BLOCK_BUILD := true
 NO_SQUISHER := true
 
 # Target device
-TARGET_DEVICE := angler
+TARGET_DEVICE := marlin
 
 # Toolchain and other
 TARGET_GCC_VERSION_KERNEL := 6.3
 
 # benzoCore
-KBUILD_BUILD_USER := xanaxdroid
-KBUILD_BUILD_HOST := benzo
+KBUILD_BUILD_USER := dustin
+KBUILD_BUILD_HOST := area-r51
 
 # Jack server heap size
 ANDROID_JACK_VM_ARGS += "-Xmx4g"
